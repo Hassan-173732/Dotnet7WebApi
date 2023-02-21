@@ -7,10 +7,10 @@ namespace Models.Services.CharacterService
 {
     public interface ICharacterService
     {
-         List<Character> GetAllCharacter();
+         Task<ServiceResponse<List<Character>>> GetAllCharacter();
 
-         Character GetCharacterById(int Id);
-         Character AddCharacter(Character newCharacter);
+         Task<ServiceResponse<Character>> GetCharacterById(int Id);
+         Task<ServiceResponse<Character>> AddCharacter(Character newCharacter);
 
 
 

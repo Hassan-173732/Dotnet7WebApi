@@ -13,21 +13,76 @@ namespace Models.Services.CharacterService
             new Character{ Id = 1,Name = "Sam"}
         };
 
-        public Character AddCharacter(Character newCharacter)
+        public async Task<ServiceResponse<Character>> AddCharacter(Character newCharacter)
         {
             characters.Add(newCharacter);
-            return newCharacter;
+            try
+            {
+                var response = new ServiceResponse<Character>{
+                Data = characters,
+                Success = true,
+                Message = "Success"
+            };
+            return  response;
+            }
+            catch (System.Exception ex)
+            {
+                var response = new ServiceResponse<Character>{
+                Data = null,
+                Success = false,
+                Message = ex.Message
+            };
+            return response;
+            }
+          
 
         }
 
-        public List<Character> GetAllCharacter()
+        public async Task<ServiceResponse<List<Character>>> GetAllCharacter()
         {
-           return characters;
+           try
+            {
+                var response = new ServiceResponse<List<Character>>{
+                Data = characters,
+                Success = true,
+                Message = "Success"
+            };
+            return  response;
+            }
+            catch (System.Exception ex)
+            {
+                var response = new ServiceResponse<List<Character>>{
+                Data = null,
+                Success = false,
+                Message = ex.Message
+            };
+            return response;
+            }
         }
 
-        public Character? GetCharacterById(int Id)
+        public async Task<ServiceResponse<Character>> GetCharacterById(int Id)
         {
-           return characters?.FirstOrDefault(x=> x.Id == Id);
+
+            try
+            {
+                var character = characters.FirstOrDefault(x=> x.Id == Id);
+                var response = new ServiceResponse<Character>{
+                Data = character,
+                Success = true,
+                Message = "Success"
+            };
+            return  response;
+            }
+            catch (System.Exception ex)
+            {
+                var response = new ServiceResponse<Character>{
+                Data = null,
+                Success = false,
+                Message = ex.Message
+            };
+            return response;
+            }
+          
         }
     }
 }

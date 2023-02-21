@@ -20,21 +20,21 @@ namespace Controllers
        
 
         [HttpGet]
-        public ActionResult<List<Character>> Get()
+        public async Task<ActionResult<ServiceResponse<List<Character>>>> Get()
         {
-         return  Ok(_characterService.GetAllCharacter());
+         return  Ok( await _characterService.GetAllCharacter());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Character> GetByID(int id)
+        public async Task<ActionResult<ServiceResponse<Character>>> GetByID(int id)
         {
-            return Ok(_characterService.GetCharacterById(id));
+            return Ok(await _characterService.GetCharacterById(id));
         }
 
          [HttpPost]
-        public ActionResult<List<Character>> AddCharacter(Character newCharacter)
+        public async Task<ActionResult<ServiceResponse<List<Character>>>> AddCharacter(Character newCharacter)
         {
-            return Ok(_characterService.AddCharacter(newCharacter));
+            return Ok( await _characterService.AddCharacter(newCharacter));
         }
 
     }
