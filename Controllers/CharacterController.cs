@@ -33,9 +33,15 @@ namespace Controllers
         }
 
          [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<AddCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter)
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
         {
             return Ok( await _characterService.AddCharacter(newCharacter));
+        }
+
+          [HttpPut]
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> UpdateCharacter(UpdateCharacterDto updatedCharacter)
+        {
+            return Ok( await _characterService.UpdateCharacter(updatedCharacter));
         }
 
     }

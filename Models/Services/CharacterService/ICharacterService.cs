@@ -11,7 +11,9 @@ namespace Models.Services.CharacterService
          Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacter();
 
          Task<ServiceResponse<GetCharacterDto>> GetCharacterById(int Id);
-         Task<ServiceResponse<AddCharacterDto>> AddCharacter(AddCharacterDto newCharacter);
+         Task<ServiceResponse<GetCharacterDto>> AddCharacter(AddCharacterDto newCharacter);
+
+        Task<ServiceResponse<GetCharacterDto>> UpdateCharacter(UpdateCharacterDto updatedCharacter);
 
 
 
